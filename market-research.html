@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Market Research for Laerdal Medical SimMan Critical Care</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.6in 0.75in;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    line-height: 1.22;
+    color: #000;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.4in;
+    background: #fff;
+  }
+  .toolbar {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    padding: 8pt 12pt;
+    margin-bottom: 16pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8pt;
+    font-family: Arial, sans-serif;
+    font-size: 9.5pt;
+    border-radius: 4px;
+    position: sticky;
+    top: 8px;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .toolbar-actions {
+    display: flex;
+    gap: 6pt;
+    flex-shrink: 0;
+  }
+  .toolbar button {
+    background: #1f4e79;
+    color: #fff;
+    border: none;
+    padding: 6pt 12pt;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 9.5pt;
+  }
+  .toolbar button.secondary {
+    background: #2e6b3e;
+  }
+  .toolbar button:hover {
+    opacity: 0.9;
+  }
+  .page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 9.2in;
+    padding-bottom: 0.4in;
+    border-bottom: 1px dashed #ccc;
+    margin-bottom: 0.4in;
+    break-after: page;
+    page-break-after: always;
+  }
+  .page:last-child {
+    break-after: auto;
+    page-break-after: auto;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .page-bottom {
+    margin-top: auto;
+    padding-top: 8pt;
+  }
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 14pt;
+  }
+  .running-header {
+    font-size: 10pt;
+    margin-bottom: 12pt;
+  }
+  .subject {
+    margin-top: 10pt;
+    margin-bottom: 12pt;
+  }
+  p {
+    margin: 0 0 8pt 0;
+    text-align: left;
+  }
+  .indent {
+    margin-left: 0.35in;
+  }
+  .indent-2 {
+    margin-left: 0.7in;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8pt 0;
+    font-size: 10pt;
+  }
+  th, td {
+    border: 1px solid #000;
+    padding: 3.5pt 5pt;
+    vertical-align: top;
+    text-align: left;
+  }
+  th {
+    background-color: #d9d9d9;
+    font-weight: normal;
+    text-align: center;
+  }
+  input[type="checkbox"] {
+    width: 10.5pt;
+    height: 10.5pt;
+    vertical-align: middle;
+    margin-right: 4pt;
+    cursor: pointer;
+    accent-color: #1f4e79;
+  }
+  .fill-input {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10.5pt;
+    color: #000;
+    border: none;
+    border-bottom: 1px solid #888;
+    background: #f8fafc;
+    padding: 1pt 3pt;
+  }
+  .fill-input:focus {
+    outline: 1px solid #1f4e79;
+    background: #fff;
+  }
+  .table-input {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+    color: #000;
+    width: 98%;
+    border: none;
+    background: #f8fafc;
+    padding: 1pt 2pt;
+  }
+  .table-input:focus {
+    outline: 1px solid #1f4e79;
+    background: #fff;
+  }
+  .table-textarea {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+    color: #000;
+    width: 98%;
+    border: none;
+    background: #f8fafc;
+    padding: 1pt 2pt;
+    resize: vertical;
+  }
+  .table-select {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10pt;
+    color: #000;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #f8fafc;
+    padding: 1pt 2pt;
+  }
+  [contenteditable="true"] {
+    border-radius: 2px;
+    transition: background-color 0.15s ease;
+  }
+  [contenteditable="true"]:hover {
+    background-color: #f8fafc;
+    outline: 1px dashed #cbd5e1;
+  }
+  [contenteditable="true"]:focus {
+    background-color: #fff;
+    outline: 1px solid #1f4e79;
+  }
+  .footnote-rule {
+    width: 2.2in;
+    border-top: 1px solid #000;
+    margin-bottom: 4pt;
+  }
+  .footnote-text {
+    font-size: 8.5pt;
+    line-height: 1.15;
+    margin-bottom: 8pt;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10pt;
+    padding-top: 4pt;
+  }
+  .sig-block {
+    margin-left: 3.5in;
+    margin-top: 14pt;
+    margin-bottom: 18pt;
+  }
+  .digital-sig {
+    font-family: Arial, sans-serif;
+    font-size: 8.5pt;
+    border-left: 2px solid #000;
+    padding-left: 6pt;
+    margin-bottom: 6pt;
+  }
+  sup {
+    font-size: 7pt;
+  }
+  a {
+    color: #0000ff;
+    text-decoration: underline;
+  }
+  @media print {
+    body {
+      padding: 0;
+      margin: 0;
+      max-width: none;
+    }
+    .toolbar {
+      display: none;
+    }
+    .page {
+      min-height: 9.5in;
+      height: auto;
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+    [contenteditable="true"]:hover,
+    [contenteditable="true"]:focus {
+      background-color: transparent;
+      outline: none;
+    }
+    .fill-input, .table-input, .table-textarea, .table-select {
+      background: transparent;
+      border-color: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .fill-input {
+      border-bottom: 1px solid #000;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <span><strong>Fully Editable Form:</strong> Click any text, field, checkbox, or table cell to edit. Save your changes as HTML or print to PDF.</span>
+  <div class="toolbar-actions">
+    <button type="button" class="secondary" onclick="saveFilledHTML()">Save / Download HTML</button>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</div>
+
+<form id="marketResearchForm">
+
+<!-- PAGE 1 -->
+<div class="page">
+  <div class="header-row">
+    <input type="text" class="fill-input" value="DETR-1F" style="color:#1f4e79; width: 1.5in; border-bottom: none;">
+    <input type="text" class="fill-input" value="14 November, 2026" style="text-align: right; width: 1.8in;">
+  </div>
+  <p contenteditable="true">MEMORANDUM FOR RECORD</p>
+  <p class="subject" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</p>
+
+  <p contenteditable="true">1.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Purpose:</strong> This memorandum serves to document how market research was conducted to arrive at the most suitable approach to acquiring the services described below, in accordance with Defense Health Agency (DHA) Procedures, Guidance, and Information (PGI) 210.002-90.</p>
+
+  <p contenteditable="true">2.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Description of Services Required:</strong> The requirement is for the acquisition of Laerdal Medical SimMan Critical Care. This is a high-fidelity, wireless, full-body critical care patient simulator designed for advanced training in critical care, emergency medicine, respiratory therapy, advanced airway management, and cardiac life support/resuscitation (ACLS/ALS). Key features include advanced physiological modeling, realistic respiratory and hemodynamic simulation, mechanical ventilation compatibility, real-time clinical feedback, and wireless operation. This equipment is required to support medical training requirements at Walter Reed National Military Medical Center (WRNMMC), Bethesda, MD. No prior acquisition history for this specific model was identified at this location.</p>
+  <p>
+    <u contenteditable="true">North American Industry Classification System (NAICS) Code<sup>1</sup>:</u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" class="fill-input" value="339112 - Surgical and Medical Instrument Manufacturing" style="width: 3.4in;"><br>
+    <u contenteditable="true">Small Business Size Standard:</u> <input type="text" class="fill-input" value="1,000 employees" style="width: 1.8in;"><br>
+    <u contenteditable="true">Product/Service Code:</u> <input type="text" class="fill-input" value="6910 Training Aids" style="width: 2.2in;"><br>
+    <span contenteditable="true">Estimated Dollar Value of Acquisition (including all options)<sup>2</sup>:</span> <input type="text" class="fill-input" placeholder="$0.00" style="width: 1.8in;"><br>
+    <input type="checkbox" name="severable"> <span contenteditable="true">Severable</span> &nbsp; <input type="checkbox" name="non_severable"> <span contenteditable="true">Non-Severable<sup>3</sup></span><br>
+    <span contenteditable="true">Place(s) of Performance<sup>4</sup>:</span><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span contenteditable="true">State(s):</span> <input type="text" class="fill-input" value="Maryland" style="width: 2in;">
+  </p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>1</sup> FAR 19.102(c) and (d): For size standard purposes, a product or service shall be classified in only one industry, whose definition best describes the principal nature of the product or service being acquired even though for other purposes it could be classified in more than one. When acquiring a product or service that could be classified in two or more industries with different size standards, contracting officers shall apply the size standard for the industry accounting for the greatest percentage of the contract price.<br>
+      <sup>2</sup> The estimated dollar value of the acquisition should include the base and any options and is used to determine what firms are capable of performing the work, whether FAR Part 5 synopsis requirements apply, whether FAR Part 13 procedures can be used, whether any automatic small business set-asides apply IAW FAR Part 19, whether FAR 4.17 Service Contracts Inventory reporting requirements may apply, or whether a contract may require preaward clearance from the Office of Federal Contract Compliance Programs (OFCCP) regional office IAW FAR 22.805.<br>
+      <sup>3</sup> The period of performance for severable services cannot exceed one year IAW 10 U.S.C. 2410a, FAR 37.106 and DFARS 237.106. Therefore, any requirement for severable services longer than one year may require the use of options IAW FAR Subpart 17.2, and DFARS 217.2.<br>
+      <sup>4</sup> The place(s) of performance will be utilized in determining the appropriate Service Contract Act wage determination(s), which can be found at <a href="http://www.wdol.gov">http://www.wdol.gov</a>.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">1</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p class="indent">
+    <span contenteditable="true">County or Counties:</span> <input type="text" class="fill-input" value="Montgomery County" style="width: 2.5in;"><br>
+    <u contenteditable="true">ZIP Code(s)<sup>5</sup></u>: <input type="text" class="fill-input" value="20889-0001" style="width: 1.5in;"><br>
+    <span contenteditable="true">Congressional District(s):</span> <input type="text" class="fill-input" value="Maryland's 8th Congressional District" style="width: 3in;">
+  </p>
+  <p contenteditable="true">3.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Method(s) Used and Timeframe of Market Research Efforts:</strong> In accordance with (IAW) FAR Part 10, market research has been conducted for this effort. The following paragraphs outline the methods used to conduct market research and the timeframe in which the market research was conducted.</p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>5</sup> The ZIP Code + 4 is used in completion of the beta.SAM.gov Contract Data Reports at time of award.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">2</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p class="indent" contenteditable="true">a. <strong>Mandatory Sources of Service:</strong> IAW FAR 8.002(a)(2), market research has been conducted to determine if mandatory Government sources are available. The Procurement List maintained by the Committee for Purchase from People Who Are Blind or Severely Disabled found at FAR 8.703 was accessed to perform a search for the subject requirement. Details regarding the search and results are listed below:</p>
+
+  <table style="width: 85%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="2" contenteditable="true">Mandatory Source of Service<sup>6</sup><br>(<a href="http://www.abilityone.gov/">http://www.abilityone.gov/</a>)</th></tr>
+    <tr><td style="width:28%;" contenteditable="true">Date of Search</td><td><input type="text" class="table-input" value="14 November 2026"></td></tr>
+    <tr><td contenteditable="true">Location</td><td contenteditable="true">AbilityOne Procurement List (<a href="http://www.abilityone.gov">http://www.abilityone.gov</a>)</td></tr>
+    <tr><td contenteditable="true">Service Type</td><td><input type="text" class="table-input" value="Medical Training Equipment / Critical Care Patient Simulators"></td></tr>
+    <tr><td contenteditable="true">Results of Search</td><td><textarea class="table-textarea" rows="2">No matching items found for Laerdal Medical SimMan Critical Care or similar high-fidelity critical care patient simulators.</textarea></td></tr>
+  </table>
+
+  <p class="indent" contenteditable="true">Based on the results of the procurement list search, Services that are on the Procurement List maintained by the Committee for Purchase from People Who Are Blind or Severely Disabled (see subpart 8.7):</p>
+  <p class="indent">
+    <input type="checkbox" name="abilityone_avail"> <span contenteditable="true"><u>Are</u> available to meet the subject requirement; OR</span><br>
+    <input type="checkbox" name="abilityone_not_avail" checked> <span contenteditable="true"><u>Are not</u> available to meet the subject requirement.</span>
+  </p>
+
+  <p class="indent" contenteditable="true">b. <strong>Federal Prison Industries, Inc. (FPI):</strong> While FAR 8.603 lists FPI as equal in priority to commercial sources, FAR 8.004 and FAR 8.601 clarifies that agencies are encouraged to consider FPI and to purchase FPI services to the maximum extent practicable.</p>
+  <p class="indent" contenteditable="true">The FPI schedule was accessed to perform a search for the subject requirement. Details regarding the search and results are listed below:</p>
+
+  <table style="width: 85%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="2" contenteditable="true">Federal Prison Industries Schedule<sup>7</sup><br>(<a href="http://www.unicor.gov">http://www.unicor.gov</a>)</th></tr>
+    <tr><td style="width:28%;" contenteditable="true">Date of Search</td><td><input type="text" class="table-input" value="14 November 2026"></td></tr>
+    <tr><td contenteditable="true">Keyword(s)</td><td><input type="text" class="table-input" value="medical simulator; patient simulator; critical care simulator; SimMan Critical Care"></td></tr>
+    <tr><td contenteditable="true">Results of Search</td><td><textarea class="table-textarea" rows="2">No matching products or services found for high-fidelity critical care patient simulators or Laerdal Medical training equipment.</textarea></td></tr>
+  </table>
+
+  <p class="indent" contenteditable="true">Based on the results of the search, services performed by FPI:</p>
+  <p class="indent">
+    <input type="checkbox" name="fpi_avail"> <span contenteditable="true"><u>Are</u> available to meet the subject requirement; OR</span><br>
+    <input type="checkbox" name="fpi_not_avail" checked> <span contenteditable="true"><u>Are not</u> available to meet the subject requirement.</span>
+  </p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>6</sup> A screenshot of the AbilityOne search results is included as an enclosure to this memorandum.<br>
+      <sup>7</sup> A screenshot of the FPI search results is included as an enclosure to this memorandum.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">3</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p contenteditable="true">4.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Results of Market Research and Analysis:</strong> An outline of the market research techniques, sources identified, and analysis of the capabilities of the potential sources identified during market research are detailed below.</p>
+  <p class="indent" contenteditable="true">a. Techniques:</p>
+
+  <table style="width: 92%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="2" contenteditable="true">Market Research Techniques<sup>8</sup></th></tr>
+    <tr><td style="width:6%; text-align:center;"><input type="checkbox" checked></td><td contenteditable="true">Applying personal knowledge in procuring services of this type: Project team has knowledge of critical care medical simulation training equipment and prior experience with similar high-fidelity medical simulators used in military medical training environments.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Contacted knowledgeable individuals in the Government and/or industry regarding market capabilities to meet requirement: State agency name(s)/company name(s) and POCs if available and date contact was made.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Held meetings/discussions with other Government offices and/or industry: State agency name(s)/company name(s) and POCs if available and date contact was made.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Reviewed results of recent market research, or other similar contracts recently awarded, for similar or identical requirements: State contract numbers as applicable, a short description of the requirement, and when the award was made.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Published formal Request(s) for Information (RFI): State details of RFI, including date of notice, date information was due, etc.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox" checked></td><td contenteditable="true">Queried Government, scientific, and/or business search engines: SAM.gov, GSA Advantage, AbilityOne.gov, UNICOR.gov, manufacturer website (laerdal.com); completed 14 November 2026.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Participated in interactive, on-line communications with industry: Explain scenario and provide date completed.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Obtained source lists of similar items from other contracting activities, agencies, trade associations, and/or other sources: State source(s) and what was received and the date received.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Reviewed catalogs and other generally available product literature published by manufacturers, distributors, dealers, etc.: State what was reviewed and when.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox" checked></td><td contenteditable="true">Attended trade shows, industry conferences, etc.: Simulation Expo @ WRNMMC on 14 November, 2026 in Bldg 9, 1<sup>st</sup> Floor.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Conducting interchange meetings or holding presolicitation conferences to involve potential offerors early in the acquisition process: Identify nature of interchange, date, location, list of attendees by name, title, organization, e-mail, and phone.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Conducting market survey: Describe how the market survey was done.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Conducting a Dynamic Small Business Search (<a href="http://dsbs.sba.gov/dsbs/search/dsp_dsbs.cfm">http://dsbs.sba.gov/dsbs/search/dsp_dsbs.cfm</a>): Dynamic Small Business Search conducted on 14 November 2026 using NAICS 339112 and keywords medical simulator, patient simulator; limited results for specialized high-fidelity critical care patient simulators.</td></tr>
+  </table>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>8</sup> Screenshots of all market research techniques used are included as enclosures to this memorandum.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">4</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <table style="width: 92%; margin-left: auto; margin-right: auto;">
+    <tr><td style="width:6%; text-align:center;"><input type="checkbox"></td><td contenteditable="true">Reviewing wholesale supply sources, such as stock programs of the General Services Administration (GSA) (<a href="http://www.gsa.gov/portal/category/20998">http://www.gsa.gov/portal/category/20998</a>), the Defense Logistics Agency (<a href="http://www.dla.mil/WhatDLAOffers/Services/">http://www.dla.mil/WhatDLAOffers/Services/</a>), the Department of Veterans Affairs (<a href="http://www.va.gov/oal/business/fss/customers.asp">http://www.va.gov/oal/business/fss/customers.asp</a>), and military inventory control points. State what sources were reviewed and the elements of any searches..</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox" checked></td><td contenteditable="true">Reviewing Federal Supply Schedules (<a href="http://www.gsa.gov/schedules">http://www.gsa.gov/schedules</a>) GSA Federal Supply Schedules searched for Schedule 65 II A Medical Equipment and 66 Scientific Equipment; no exact match for SimMan Critical Care identified.</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox" checked></td><td contenteditable="true">Other: Manufacturer website review, online product literature review, and commercial marketplace search conducted 14 November 2026.</td></tr>
+  </table>
+
+  <p class="indent" contenteditable="true">b. The following sources were identified through the market research efforts<sup>9</sup>:</p>
+
+  <table style="width: 90%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="3" contenteditable="true">Name, Size, and Status of Potential Sources</th></tr>
+    <tr><td style="width:6%;" contenteditable="true">#</td><td style="width:54%;" contenteditable="true">Name of Potential Sources</td><td contenteditable="true">Business Size and Status</td></tr>
+    <tr><td>1</td><td><input type="text" class="table-input" value="Laerdal Medical"></td><td><select class="table-select"><option>Select One</option><option selected>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>2</td><td><input type="text" class="table-input" value="Gaumard Scientific"></td><td><select class="table-select"><option>Select One</option><option selected>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>3</td><td><input type="text" class="table-input" value="CAE Healthcare"></td><td><select class="table-select"><option>Select One</option><option selected>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>4</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>5</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>6</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>7</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>8</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>9</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+    <tr><td>10</td><td><input type="text" class="table-input"></td><td><select class="table-select"><option selected>Select One</option><option>Other Than Small Business</option><option>Small Business</option><option>8(a)</option><option>HUBZone</option><option>SDVOSB</option><option>WOSB</option><option>EDWOSB</option></select></td></tr>
+  </table>
+
+  <p class="indent" contenteditable="true">c. Analysis: Laerdal Medical is the original equipment manufacturer of the SimMan Critical Care and is the primary source capable of providing the exact configuration with the required critical care and clinical simulation features for WRNMMC training. Gaumard Scientific and CAE Healthcare offer high-fidelity medical patient simulators that may serve as potential alternatives or equals for general clinical training, but market research indicates their products may not fully replicate the integrated critical care physiological modeling, mechanical ventilation compatibility, and platform architecture specific to the Laerdal SimMan Critical Care. All identified sources have experience providing medical training equipment to federal and DoD customers. Further capability assessments and brand-name or equal evaluations are recommended if competition is pursued.</p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>9</sup> As applicable, a detailed list of specific interested and/or capable sources is included as an enclosure to this memorandum.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">5</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p contenteditable="true">5.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Commercial Item Applicability:</strong> One of the key purposes of market research is to determine whether Government requirements can be met through commercial sources.</p>
+  <p class="indent"><input type="checkbox" name="comm_yes"> <span contenteditable="true">IAW FAR 10.002(b)(1)(i), the results of the market research have demonstrated that the Government's needs can be met by items of a type customarily available in the commercial marketplace<sup>10</sup> that would meet the definition of a <u>commercial item</u> at FAR 2.1. Therefore, IAW FAR 10.002(d)(1), the contracting officer <u>shall</u> solicit and award any resultant contract using the policies and procedures in FAR Part 12; OR</span></p>
+  <p class="indent"><input type="checkbox" name="comm_no"> <span contenteditable="true">IAW FAR 10.002(b)(1)(i) the results of the market research have demonstrated that the Government's needs can be met by items used <u>exclusively for governmental purposes</u> after being reevaluated IAW FAR 10.001(a)(3)(ii). Therefore IAW FAR 10.002(d)(1), the contracting officer <u>shall not</u> use the policies and procedures in FAR Part 12.</span></p>
+
+  <p contenteditable="true">6.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Simplified Acquisition Methods:</strong> IAW FAR 13.003(a) and FAR 13.500, Simplified Acquisition Procedures found in FAR Part 13 shall be used to the maximum extent practicable for the acquisition of services not exceeding the simplified acquisition threshold and may be used for the acquisition of commercial services with values greater than the simplified acquisition threshold but not exceeding the thresholds indicated at FAR 13.500(a).</p>
+  <p class="indent">
+    <input type="checkbox" name="sap_yes"> <span contenteditable="true">FAR Part 13 Simplified Acquisition Procedures <u>will</u> be used for this acquisition; OR</span><br>
+    <input type="checkbox" name="sap_no"> <span contenteditable="true">FAR Part 13 Simplified Acquisition Procedures <u>will not</u> be used for this acquisition.</span>
+  </p>
+
+  <p contenteditable="true">7.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Competition:</strong> IAW FAR 6.101, 10 U.S.C.2304 and 41 U.S.C.3301 contracting officers shall promote and provide for full and open competition in soliciting offers and awarding Government contracts. Contracting officers shall provide for full and open competition through use of the competitive procedure(s) that are best suited to the circumstances of the contract action and consistent with the need to fulfill the Government's requirements efficiently.</p>
+  <p class="indent"><input type="checkbox" name="comp_full"> <span contenteditable="true">Competition: The subject requirement will be acquired using <u>full and open</u> competition, <u>full and open after exclusion of sources</u> (small business set-aside); OR</span></p>
+  <p class="indent"><input type="checkbox" name="comp_sole"> <span contenteditable="true">No competition (sole source) The subject requirement will be acquired using <u>other than full and open</u> competition (sole source) under authority of one of the following:</span></p>
+
+  <table style="width: 85%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="2" contenteditable="true">Other than Full and Open Competition<sup>11</sup></th></tr>
+    <tr><td style="width:6%; text-align:center;"><input type="checkbox"></td><td contenteditable="true">Agency for the Blind or other Severely Disabled (FAR 8.7)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">8(a) Sole Source less than or equal to $22million (FAR 19.805-1)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">8(a) Sole Source greater than $22million (FAR 19.805-1)*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">HUBZone Sole Source (FAR 19.1306)*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Women-Owned Sole Source (FAR 19.1506) *</td></tr>
+  </table>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>10</sup> A commerciality determination memorandum has been prepared and included in the file IAW FAR 10.001(a)(3)(ii), FAR 10.002(b), DFARS 212.102, DFARS PGI 212.102, and AFARS 5112.102.<br>
+      <sup>11</sup> Those items marked with an asterisk may require a Single Source Determination or a Justification and Approval document, which will be prepared and routed for approval and will be included in the contract file.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">6</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <table style="width: 85%; margin-left: auto; margin-right: auto;">
+    <tr><td style="width:6%; text-align:center;"><input type="checkbox"></td><td contenteditable="true">Economically Disadvantaged Women-Owned Sole Source (FAR 19.1506)*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">SDVOSB Sole Source (FAR 19.1406)*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Federal Prison Industries (FAR 8.6)*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">FAR 6.302 Sole Source*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">FAR 13.106-1 Single Source*</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Small Business Innovation Research (SBIR) Award (15 U.S.C. 638(r)(4))</td></tr>
+  </table>
+
+  <p contenteditable="true">8.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Set-Asides:</strong> Small business set-asides must be considered before acquiring services using full and open competition as detailed in FAR 19.502-2<sup>12</sup>.</p>
+  <p class="indent" contenteditable="true">IAW FAR 19.502-2, the Contracting Officer has analyzed the results of the market research for potential set-asides. Those services with an anticipated dollar value exceeding the micro-purchase threshold, but not exceeding the simplified acquisition threshold are automatically reserved exclusively for small business concerns and shall be set aside for small business unless the Contracting Officer determines there is not a reasonable expectation of obtaining offers from two (2) or more responsible small business concerns that are competitive in terms of market prices, quality, and delivery. The Contracting Officer shall set aside any acquisition over the simplified acquisition threshold for small business participation when there is a reasonable expectation that offers will be obtained from at least two (2) responsible small business concerns offering the products of different small business concerns and award will be made at fair market prices.</p>
+  <p class="indent" contenteditable="true">Select One:</p>
+  <p class="indent"><input type="checkbox" name="sb_no"> <span contenteditable="true">Based on the results of the market research, there <u>is not</u> a reasonable expectation that offers will be obtained from at least two (2) responsible small business concerns offering the products of different small business concerns and award will be made at fair market prices<sup>13</sup>; OR</span></p>
+  <p class="indent"><input type="checkbox" name="sb_yes"> <span contenteditable="true">Based on the results of the market research, there <u>is</u> a reasonable expectation that offers will be obtained from at least two (2) responsible small business concerns offering the products of different small business concerns and award will be made at fair market prices.</span></p>
+  <p class="indent-2" contenteditable="true">a. <strong>Socio-economic programs:</strong> IAW FAR 19.203, the Contracting Officer has considered setting aside this acquisition for the small business socioeconomic contracting programs (i.e., 8(a), HUBZone, SDVOSB, or WOSB programs). In determining which, if any, socioeconomic program to use for this acquisition, the Contracting Officer has considered the results of market research that was done to determine if there are socioeconomic firms capable of satisfying the agency's requirement, and has analyzed District progress in fulfilling its small business goals.</p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>12</sup> A Small Business Recommendation Memorandum or Department of Defense (DD) Form 2579 will be prepared and routed to the Small Business Administration as required by DFARS 219.201(c)(10).<br>
+      <sup>13</sup> FAR 19.1307 requires the Contracting Officer to giver offers from HUBZone small business concerns a price evaluation preference when using full and open by adding a factor of 10 percent to all offers except offers from HUBZone small business concerns that haven't waived the evaluation preference or otherwise successful offers from small business concerns.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">7</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p class="indent" contenteditable="true">Select One:</p>
+  <p class="indent"><input type="checkbox" name="socio_no"> <span contenteditable="true">After analyzing the results of the market research, the Contracting Officer has determined that there <u>is not</u> a reasonable expectation of receiving offers from two (2) or more socioeconomic contracting program small business concerns and/or that award would not be made at a fair market price. Therefore, this acquisition <u>will not</u> be set aside for a small business socioeconomic contracting program; OR</span></p>
+  <p class="indent"><input type="checkbox" name="socio_yes"> <span contenteditable="true">After analyzing the results of the market research, the Contracting Officer has determined that there <u>is</u> a reasonable expectation of receiving offers from two (2) or more socioeconomic contracting program small business concerns and that award will be made at a fair market price. Therefore, this acquisition <u>will</u> be set aside for the following socioeconomic contracting program:</span></p>
+
+  <table style="width: 85%; margin-left: auto; margin-right: auto;">
+    <tr><th colspan="2" contenteditable="true">Socioeconomic Contracting Programs</th></tr>
+    <tr><td style="width:6%; text-align:center;"><input type="checkbox"></td><td contenteditable="true">Section 8(a)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Historically Underutilized Business Zone (HUBZone)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Service-Disabled Veteran-Owned Small Business (SDVOSB)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Economically Disadvantaged Women-Owned Small Business (EDWOSB)</td></tr>
+    <tr><td style="text-align:center;"><input type="checkbox"></td><td contenteditable="true">Women-Owned Small Business (WOSB) Eligible</td></tr>
+  </table>
+
+  <p contenteditable="true">9.&nbsp;&nbsp;&nbsp;&nbsp;<strong>Performance-Based Acquisition:</strong> As detailed in FAR 37.102, performance-based acquisition is the preferred method for acquiring services. When acquiring services, agencies must use performance-based acquisition methods to the maximum extent practicable.</p>
+  <p class="indent" contenteditable="true">IAW FAR 37.601, the subject requirement:</p>
+  <p class="indent"><input type="checkbox" name="pba_yes"> <span contenteditable="true">Will be procured using <u>performance-based</u> acquisition methods as outlined in FAR Subpart 37.6 and will include a performance work statement (PWS), measurable performance standards (i.e., in terms of quality, timeliness, quantity, etc.) and the method of assessing contractor performance against performance standards; and performance incentives where appropriate; OR</span></p>
+  <p class="indent"><input type="checkbox" name="pba_no"> <span contenteditable="true">Will be procured using <u>other than</u> performance-based acquisition methods<sup>14</sup>.</span></p>
+
+  <p contenteditable="true">10.&nbsp;&nbsp;&nbsp;<strong>Personal Services:</strong> As outlined in FAR 37.104, a personal services contract is characterized by the employer-employee relationship it creates between the Government and the contractor's personnel. The Government is normally required to obtain its employees by direct hire under competitive appointment or other procedures required by the civil service laws. Obtaining personal services by contract, rather than by direct hire, circumvents those laws unless Congress has specifically authorized acquisition of the services by contract. Agencies shall not award personal services contracts unless specifically authorized by statute to do so. The Contracting Officer is responsible for ensuring that a proposed contract for services is proper</p>
+
+  <div class="page-bottom">
+    <div class="footnote-rule"></div>
+    <div class="footnote-text" contenteditable="true">
+      <sup>14</sup> Approval will be obtained from the Head of the Contracting Activity (HCA) IAW 10 U.S.C. 2330, DFARS 237.170 and AFARS 5137.170-2 to acquire services through a contract or task order that is not performance-based.
+    </div>
+    <div class="footer"><span></span><span contenteditable="true">8</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 9 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p class="indent" contenteditable="true">IAW FAR 37.103 and after reviewing the nature of the subject requirement hereby determines that:</p>
+  <p class="indent">
+    <input type="checkbox" name="personal"> <span contenteditable="true">The proposed service is for <u>personal</u> services.</span><br>
+    <input type="checkbox" name="nonpersonal"> <span contenteditable="true">The proposed service is for <u>nonpersonal</u> services.</span>
+  </p>
+
+  <p contenteditable="true">11.&nbsp;&nbsp;&nbsp;<strong>Consolidation or Bundling:</strong> FAR 10.001(a)(3)(vi)-(vii) and FAR 10.001(c) outline requirements to utilize market research results to determine whether consolidation or bundling is necessary and to consult with the agency Small Business Specialist and the local Small Business Administration (SBA) Procurement Center Representative (PCR) if contemplating consolidating or bundling requirements. The market research results of the subject requirement have been reviewed:</p>
+  <p class="indent">
+    <input type="checkbox" name="consol_yes"> <span contenteditable="true">Consolidation and/or bundling <u>are</u> being contemplated for the subject requirement.</span><br>
+    <input type="checkbox" name="consol_no"> <span contenteditable="true">Consolidation and/or bundling <u>are not</u> being contemplated for the subject requirement.</span>
+  </p>
+
+  <p contenteditable="true">12.&nbsp;&nbsp;&nbsp;<strong>Sustainability:</strong> FAR 23.103 details the requirement for Federal agencies to advance sustainable acquisition by ensuring that 95 percent of new contract actions performed within the United States meet sustainability requirements. The results of the market research were shared with the Project Manager and used to evaluate the services to be performed for promotion of energy conservation and efficiency IAW FAR 10.001(a)(3)(v). The following provisions and clauses have been identified for inclusion in the solicitation/contract for the subject requirement:</p>
+  <p class="indent" style="line-height: 1.3;">
+    <input type="checkbox"> <span contenteditable="true">52.204-4 – Printed or Copied Double-Sided on Postconsumer Fiber Content Paper</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.204-7 – System for Award Management (Provision)</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-1 – Biobased Product Certification</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-2 – Affirmative Procurement of Biobased Products under Service and Construction Contracts</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-4 – Recovered Material Certification (Provision)</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-9 – Estimate of Percentage of Recovered Material Content for EPA Designated Items</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-10 – Waste Reduction Program</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-13 – Acquisition of EPEAT&reg;–Registered Imaging Equipment</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-14 – Acquisition of EPEAT&reg;-Registered Televisions</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-15 – Energy Efficiency in Energy-Consuming Products</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-16 – Acquisition of EPEAT&reg;-Registered Personal Computer Products</span><br>
+    <input type="checkbox"> <span contenteditable="true">52.223-17 – Affirmative Procurement of EPA-Designated Items in Service and Construction Contracts</span>
+  </p>
+
+  <p contenteditable="true">13.&nbsp;&nbsp;&nbsp;<strong>Identification of Those Involved in the Market Research Efforts:</strong></p>
+  <table style="width: 92%; margin-left: auto; margin-right: auto;">
+    <tr><th style="width:28%;" contenteditable="true">Name</th><th style="width:36%;" contenteditable="true">Job Title</th><th style="width:36%;" contenteditable="true">Email Address</th></tr>
+    <tr><td><input type="text" class="table-input" value="Ms. Kelly Tchemi"></td><td><input type="text" class="table-input" value="Acting Operations Chief"></td><td><input type="text" class="table-input" value="kelly.t.tchemi.civ@health.mil"></td></tr>
+    <tr><td><input type="text" class="table-input" value="Mr. Mark Wyn"></td><td><input type="text" class="table-input" value="DHA-NCR Simulation Liaison"></td><td><input type="text" class="table-input" value="mark.j.wyn.civ@health.mil"></td></tr>
+  </table>
+
+  <div class="page-bottom">
+    <div class="footer"><span></span><span contenteditable="true">9</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+<!-- PAGE 10 -->
+<div class="page">
+  <div class="running-header" contenteditable="true">SUBJECT: Market Research for Laerdal Medical SimMan Critical Care at Walter Reed National Military Medical Center, Bethesda, MD</div>
+  <p contenteditable="true">14.&nbsp;&nbsp;&nbsp;<strong>Conclusion and Summary:</strong> Market research confirms that the Laerdal Medical SimMan Critical Care is a commercial item manufactured by Laerdal Medical. No mandatory sources (AbilityOne or FPI) can provide this specialized high-fidelity critical care patient simulator. Limited commercial sources exist for equivalent critical care patient simulators with the specific features required for military medical training at WRNMMC. The acquisition is recommended as a commercial item under FAR Part 12. Depending on the final estimated value, simplified acquisition procedures under FAR Part 13 may apply. If the exact model is required without acceptable alternatives, a sole source justification under FAR 6.302-1 may be necessary. Small business set-aside is not recommended due to the specialized nature and limited sources identified.</p>
+
+  <div class="sig-block">
+    <div class="digital-sig" contenteditable="true">
+      WYN.MARK.JOHN.1042867000<br>
+      Digitally signed by WYN.MARK.JOHN.1042867000<br>
+      Date: 2026.11.14 18:43:31 -05'00'
+    </div>
+    <input type="text" class="fill-input" value="MARK J. WYN" style="width: 2.5in; border-bottom: none;"><br>
+    <input type="text" class="fill-input" value="Project Manager" style="width: 2.5in; border-bottom: none;">
+  </div>
+
+  <p contenteditable="true">Encls</p>
+  <div class="sig-block">
+    <input type="text" class="fill-input" placeholder="Contracting Officer Name / Signature" style="width: 2.8in;"><br>
+    <span contenteditable="true">Contracting Officer</span>
+  </div>
+
+  <table style="width: 92%; margin-left: auto; margin-right: auto;">
+    <tr>
+      <th style="width:15%;" contenteditable="true"><strong>Enclosure<br>Number</strong></th>
+      <th style="width:52%;" contenteditable="true"><strong>Title</strong></th>
+      <th style="width:18%;" contenteditable="true"><strong>Date<br>(MM/DD/YY)</strong></th>
+      <th style="width:15%;" contenteditable="true"><strong>Number of<br>Pages</strong></th>
+    </tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+    <tr><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td><td><input type="text" class="table-input"></td></tr>
+  </table>
+
+  <div class="page-bottom">
+    <div class="footer"><span></span><span contenteditable="true">10</span><span contenteditable="true">Version 1.0</span></div>
+  </div>
+</div>
+
+</form>
+
+<script>
+function saveFilledHTML() {
+  document.querySelectorAll('input[type="text"]').forEach(el => {
+    el.setAttribute('value', el.value);
+  });
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => {
+    if (el.checked) {
+      el.setAttribute('checked', 'checked');
+    } else {
+      el.removeAttribute('checked');
+    }
+  });
+  document.querySelectorAll('textarea').forEach(el => {
+    el.textContent = el.value;
+  });
+  document.querySelectorAll('select').forEach(sel => {
+    Array.from(sel.options).forEach(opt => {
+      if (opt.selected) {
+        opt.setAttribute('selected', 'selected');
+      } else {
+        opt.removeAttribute('selected');
+      }
+    });
+  });
+
+  const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  const blob = new Blob([htmlContent], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Laerdal_SimMan_Critical_Care_Market_Research.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
